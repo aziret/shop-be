@@ -6,6 +6,7 @@ exports.getProduct = async (event) => {
   if (!productId) {
     return {
       statusCode: 400,
+      headers: { "Access-Control-Allow-Origin": "*" },
       body: JSON.stringify({ error: "Product ID is required" }),
     };
   }
@@ -15,12 +16,14 @@ exports.getProduct = async (event) => {
   if (!product) {
     return {
       statusCode: 404,
+      headers: { "Access-Control-Allow-Origin": "*" },
       body: JSON.stringify({ error: "Product not found" }),
     };
   }
 
   return {
     statusCode: 200,
+    headers: { "Access-Control-Allow-Origin": "*" },
     body: JSON.stringify(product),
   };
 };
