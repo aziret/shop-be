@@ -1,7 +1,7 @@
 const products = [
     {
         "id": 1,
-        "name": "iPhone 15 Pro",
+        "title": "iPhone 15 Pro",
         "brand": "Apple",
         "price": 999.99,
         "currency": "USD",
@@ -12,7 +12,7 @@ const products = [
     },
         {
         "id": 2,
-        "name": "Samsung Galaxy S23 Ultra",
+        "title": "Samsung Galaxy S23 Ultra",
         "brand": "Samsung",
         "price": 1199.99,
         "currency": "USD",
@@ -23,7 +23,7 @@ const products = [
         },
     {
     "id": 3,
-    "name": "Google Pixel 8 Pro",
+    "title": "Google Pixel 8 Pro",
     "brand": "Google",
     "price": 899.99,
     "currency": "USD",
@@ -34,7 +34,7 @@ const products = [
     },
     {
     "id": 4,
-    "name": "OnePlus 11",
+    "title": "OnePlus 11",
     "brand": "OnePlus",
     "price": 699.99,
     "currency": "USD",
@@ -45,7 +45,7 @@ const products = [
     },
     {
     "id": 5,
-    "name": "Xiaomi 13 Pro",
+    "title": "Xiaomi 13 Pro",
     "brand": "Xiaomi",
     "price": 799.99,
     "currency": "USD",
@@ -56,7 +56,7 @@ const products = [
     },
     {
     "id": 6,
-    "name": "Sony Xperia 1 V",
+    "title": "Sony Xperia 1 V",
     "brand": "Sony",
     "price": 1099.99,
     "currency": "USD",
@@ -67,7 +67,7 @@ const products = [
     },
     {
     "id": 7,
-    "name": "Asus ROG Phone 7",
+    "title": "Asus ROG Phone 7",
     "brand": "Asus",
     "price": 999.99,
     "currency": "USD",
@@ -78,7 +78,7 @@ const products = [
     },
     {
     "id": 8,
-    "name": "Nothing Phone (2)",
+    "title": "Nothing Phone (2)",
     "brand": "Nothing",
     "price": 599.99,
     "currency": "USD",
@@ -89,7 +89,7 @@ const products = [
     },
     {
     "id": 9,
-    "name": "Motorola Edge 40 Pro",
+    "title": "Motorola Edge 40 Pro",
     "brand": "Motorola",
     "price": 799.99,
     "currency": "USD",
@@ -100,7 +100,7 @@ const products = [
     },
     {
     "id": 10,
-    "name": "Realme GT 3",
+    "title": "Realme GT 3",
     "brand": "Realme",
     "price": 699.99,
     "currency": "USD",
