@@ -1,0 +1,84 @@
+openapi: 3.0.0
+info:
+  title: Product Service API
+  description: API for managing products
+  version: 1.0.0
+servers:
+  - url: https://zwliqbx8j9.execute-api.eu-west-1.amazonaws.com/dev
+paths:
+  /products:
+    get:
+      summary: Get a list of products
+      operationId: getProducts
+      responses:
+        "200":
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    title:
+                      type: string
+                    brand:
+                      type: string
+                    price:
+                      type: number
+                    currency:
+                      type: string
+                    stock:
+                      type: integer
+                    rating:
+                      type: number
+                    features:
+                      type: array
+                      items:
+                        type: string
+                    image:
+                      type: string
+        "404":
+          description: No products available
+  /products/{productId}:
+    get:
+      summary: Get a single product by ID
+      operationId: getProductById
+      parameters:
+        - name: productId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: A single product
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  title:
+                    type: string
+                  brand:
+                    type: string
+                  price:
+                    type: number
+                  currency:
+                    type: string
+                  stock:
+                    type: integer
+                  rating:
+                    type: number
+                  features:
+                    type: array
+                    items:
+                      type: string
+                  image:
+                    type: string
+        "404":
+          description: Product not found
