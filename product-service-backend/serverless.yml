@@ -42,3 +42,10 @@ functions:
             parameters:
               paths:
                 productId: true
+  createProduct:
+    handler: handlers/createProduct.createProduct
+    events:
+      - http:
+          path: products
+          method: post
+          cors: true
