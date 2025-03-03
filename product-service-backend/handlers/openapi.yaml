@@ -24,24 +24,42 @@ paths:
                       type: integer
                     title:
                       type: string
-                    brand:
+                    description:
                       type: string
                     price:
                       type: number
-                    currency:
-                      type: string
                     stock:
                       type: integer
-                    rating:
-                      type: number
-                    features:
-                      type: array
-                      items:
-                        type: string
-                    image:
-                      type: string
         "404":
           description: No products available
+    post:
+      summary: Create a product
+      operationId: createProduct
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateProductRequest"
+      responses:
+        "200":
+          description: Product created successfully
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateProductResponse"
+        "400":
+          description: Validation error (invalid input)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
   /products/{productId}:
     get:
       summary: Get a single product by ID
@@ -64,21 +82,59 @@ paths:
                     type: integer
                   title:
                     type: string
-                  brand:
+                  description:
                     type: string
                   price:
                     type: number
-                  currency:
-                    type: string
                   stock:
                     type: integer
-                  rating:
-                    type: number
-                  features:
-                    type: array
-                    items:
-                      type: string
-                  image:
-                    type: string
         "404":
           description: Product not found
+
+components:
+  schemas:
+    CreateProductRequest:
+      type: object
+      required:
+        - title
+        - price
+        - stock
+      properties:
+        title:
+          type: string
+          description: The name of the product
+          example: "Sony Xperia 1 IV"
+        description:
+          type: string
+          description: A short description of the product
+          example: "6.5-inch 4K OLED, Snapdragon 8 Gen 1, Pro Camera"
+        price:
+          type: number
+          format: float
+          minimum: 0.01
+          description: The price of the product (must be positive)
+          example: 1599
+        stock:
+          type: integer
+          format: int32
+          minimum: 0
+          description: Number of products in stock (must be non-negative)
+          example: 80
+
+    CreateProductResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: "Product created successfully"
+        productId:
+          type: string
+          format: uuid
+          example: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Title must not be empty."

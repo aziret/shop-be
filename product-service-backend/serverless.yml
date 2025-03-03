@@ -10,6 +10,20 @@ provider:
   runtime: nodejs20.x
   region: eu-west-1
   stage: dev
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:PutItem
+            - dynamodb:GetItem
+            - dynamodb:Scan
+            - dynamodb:Query
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - arn:aws:dynamodb:eu-west-1:797351030341:table/RS_products
+            - arn:aws:dynamodb:eu-west-1:797351030341:table/RS_stocks
 
 functions:
   getProductsList:
@@ -28,3 +42,10 @@ functions:
             parameters:
               paths:
                 productId: true
+  createProduct:
+    handler: handlers/createProduct.createProduct
+    events:
+      - http:
+          path: products
+          method: post
+          cors: true
